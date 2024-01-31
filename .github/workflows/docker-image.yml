@@ -9,20 +9,25 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+
     steps:
     - name: Checkout репозитория
       uses: actions/checkout@v2
 
-    - name: Установка Nginx
-      run: sudo apt-get update && sudo apt-get install -y nginx
+    - name: Запуск Nginx в контейнере
+      run: docker run -d --name my-nginx -p 8080:80 nginx
 
-    - name: Проверка конфигурации Nginx
-      run: sudo nginx -t
+    - name: Выполнение команды в контейнере Docker
+      run: docker exec -it my-nginx ls /usr/share/nginx/html
 
-    - name: Запуск Nginx
-      run: |
-          sudo nginx -g "daemon off;" &
-          echo "Nginx запущен"
-          sleep 10
-          ps aux | grep nginx
+    - name: Остановка и удаление контейнера
+      run: docker stop my-nginx && docker rm my-nginx
+
+      
+    # - name: Запуск Nginx
+    #   run: |
+    #       sudo nginx -g "daemon off;" &
+    #       echo "Nginx запущен"
+    #       sleep 10
+    #       ps aux | grep nginx
 
