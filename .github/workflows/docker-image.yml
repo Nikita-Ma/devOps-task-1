@@ -18,7 +18,7 @@ jobs:
       run: docker run -d --name my-nginx -p 8080:80 nginx
 
     - name: Выполнение команды в контейнере Docker
-      run: docker exec -it my-nginx ls /usr/share/nginx/html
+      run: docker exec my-nginx bash -c "ls /usr/share/nginx/html"
 
     - name: Остановка и удаление контейнера
       run: docker stop my-nginx && docker rm my-nginx
