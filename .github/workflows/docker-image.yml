@@ -14,5 +14,5 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run:  docker run --name test nginx &&  docker stop test
+      run:  docker run --name test node:21-alpine3.18 && docker stop test
       
