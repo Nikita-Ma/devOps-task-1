@@ -20,4 +20,9 @@ jobs:
       run: sudo nginx -t
 
     - name: Запуск Nginx
-      run: sudo nginx -g "daemon off;"
+      run: |
+          sudo nginx -g "daemon off;" &
+          echo "Nginx запущен"
+          ps aux | grep nginx
+    - name: Завершение Nginx
+      run: systemctl nginx stop
