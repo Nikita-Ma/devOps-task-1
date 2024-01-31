@@ -10,9 +10,9 @@ jobs:
   build:
      
     runs-on: ubuntu-latest
-    timeout-minutes: 10 
+    timeout-minutes: 3 
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run:  docker run nginx 
+      run:  docker run --name test nginx &&  docker stop test
       
