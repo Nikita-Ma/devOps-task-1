@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker run -p 80:80 nginx
+      run: docker run -p 80:80 nginx:alpine
